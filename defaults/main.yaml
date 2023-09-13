@@ -1,0 +1,9 @@
+filesystem_support_packages:
+  - f2fs-tools
+  - fuse3
+  - ntfs-3g
+  - exfat-fuse
+  - exfatprogs
+  - sshfs
+
+filesystem_mounts: []

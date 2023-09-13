@@ -1,0 +1,17 @@
+- name: Install filesystem support packages
+  package:
+    name: "{{ filesystem_support_packages }}"
+    state: present
+  become: true
+  become_user: root
+
+- name: Configure filesystem mounts
+  mount:
+    path: "{{ item.path }}"
+    src: "{{ item.src }}"
+    fstype: "{{ item.fstype }}"
+    opts: "{{ item.opts | default('noauto') }}"
+    dump: "{{ item.dump | default('0') }}"
+    passno: "{{ item.passno | default('0') }}"
+    state: "mounted"
+  loop: "{{ filesystem_mounts }}"
